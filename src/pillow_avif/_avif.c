@@ -730,7 +730,7 @@ AvifDecoderNew(PyObject *self_, PyObject *args) {
 
     avifResult result;
 
-    if (!PyArg_ParseTuple(args, "Sss", &avif_bytes, &codec_str, &upsampling_str)) {
+    if (!PyArg_ParseTuple(args, "Sssi", &avif_bytes, &codec_str, &upsampling_str, &max_threads)) {
         return NULL;
     }
 

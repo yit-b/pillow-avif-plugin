@@ -16,6 +16,7 @@ except ImportError:
 # to Image.open (see https://github.com/python-pillow/Pillow/issues/569)
 DECODE_CODEC_CHOICE = "auto"
 CHROMA_UPSAMPLING = "auto"
+DECODE_MAX_THREADS = 0
 
 _VALID_AVIF_MODES = {"RGB", "RGBA"}
 
@@ -61,7 +62,7 @@ class AvifImageFile(ImageFile.ImageFile):
 
     def _open(self):
         self._decoder = _avif.AvifDecoder(
-            self.fp.read(), DECODE_CODEC_CHOICE, CHROMA_UPSAMPLING
+            self.fp.read(), DECODE_CODEC_CHOICE, CHROMA_UPSAMPLING, DECODE_MAX_THREADS
         )
 
         # Get info from decoder
